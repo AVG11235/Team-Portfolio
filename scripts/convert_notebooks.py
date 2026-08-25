@@ -69,6 +69,7 @@ CODE_RUNNER_PATTERNS = {
     'javascript': r'^//\s*CODE_RUNNER:\s*(.+)$',
     'python': r'^#\s*CODE_RUNNER:\s*(.+)$',
     'java': r'^//\s*CODE_RUNNER:\s*(.+)$',
+    'pseudocode': r'^//\s*CODE_RUNNER:\s*(.+)$',
 }
 
 # UI_RUNNER pattern for HTML cells
@@ -102,6 +103,10 @@ def detect_cell_language(cell):
     # JavaScript: first line is %%js magic command
     if lines and lines[0].strip().startswith('%%js'):
         return 'javascript'
+
+    # Pseudocode: first line is %%pseudocode magic command
+    if lines and lines[0].strip().startswith('%%pseudocode'):
+        return 'pseudocode'
 
     # Java: last non-whitespace line matches ClassName.main(null);
     # Find last non-empty line

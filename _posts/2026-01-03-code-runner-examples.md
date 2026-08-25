@@ -14,7 +14,7 @@ Fix the syntax error. Run the code to get a hint!
 {% endcapture %}
 
 {% capture code1 %}
-print('Hello World'
+print('Hello World')
 {% endcapture %}
 
 {% include runners/code.html
